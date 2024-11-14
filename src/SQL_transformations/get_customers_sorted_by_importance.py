@@ -1,4 +1,4 @@
-def sort_customers_by_importance(dataframe_dict):
+def get_customers_sorted_by_importance(dataframe_dict):
     customer_df = dataframe_dict['customer']
     transactions_df = dataframe_dict['transactions']
 
