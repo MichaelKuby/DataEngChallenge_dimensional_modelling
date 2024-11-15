@@ -1,0 +1,33 @@
+trigger:
+  branches:
+    include:
+      - DataEngScaling_Dimensional_Modeling_MichaelKuby
+
+pr:
+  branches:
+    include:
+      - DataEngScaling_Dimensional_Modeling_MichaelKuby
+
+jobs:
+- job: Build
+  displayName: 'Build and Test'
+  pool:
+    vmImage: 'ubuntu-latest'
+
+  steps:
+  - task: Checkout@3
+    displayName: 'Checkout repository'
+
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.12'
+      addToPath: true
+
+  - script: |
+      python -m pip install --upgrade pip
+      pip install -r requirements.txt
+    displayName: 'Install dependencies'
+
+  - script: |
+      black --check .
+    displayName: 'Run Black formatter check'
