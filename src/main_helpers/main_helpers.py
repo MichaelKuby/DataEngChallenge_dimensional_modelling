@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 
-from pandas_profiling import ProfileReport
+from ydata_profiling import ProfileReport
 
 
 def get_input_output_folders():
@@ -67,7 +67,7 @@ def print_df_info_to_console(dataframe_dict):
 def create_data_profiles(dataframe_dict, base_output_folder):
     profiles_folder = os.path.join(base_output_folder, "profiles")
 
-    if len(os.listdir(profiles_folder)) == 3:
+    if os.path.exists(profiles_folder) and len(os.listdir(profiles_folder)) == 3:
         print("Profiles already exist. Skipping creation.")
         return
 
