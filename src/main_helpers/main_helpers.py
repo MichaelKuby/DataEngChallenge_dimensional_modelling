@@ -6,9 +6,9 @@ from pandas_profiling import ProfileReport
 
 def get_input_output_folders():
     base_folder = os.path.dirname(os.path.abspath(__file__ + "/../.."))
-    data_folder = os.path.join(base_folder, 'data')
-    input_folder = os.path.join(data_folder, 'input')
-    output_folder = os.path.join(data_folder, 'output')
+    data_folder = os.path.join(base_folder, "data")
+    input_folder = os.path.join(data_folder, "input")
+    output_folder = os.path.join(data_folder, "output")
     return input_folder, output_folder
 
 
@@ -41,13 +41,17 @@ def get_transactions_data(input_folder, filename):
 
 
 def get_dataframes(input_folder):
-    customer_df = get_customer_data(input_folder=input_folder, filename='customer_data.csv')
-    product_df = get_product_data(input_folder=input_folder, filename='products.xml')
-    transactions_df = get_transactions_data(input_folder=input_folder, filename='transactions.json')
+    customer_df = get_customer_data(
+        input_folder=input_folder, filename="customer_data.csv"
+    )
+    product_df = get_product_data(input_folder=input_folder, filename="products.xml")
+    transactions_df = get_transactions_data(
+        input_folder=input_folder, filename="transactions.json"
+    )
     dataframe_dict = {
         "customer": customer_df,
         "product": product_df,
-        "transactions": transactions_df
+        "transactions": transactions_df,
     }
     return dataframe_dict
 
@@ -61,7 +65,7 @@ def print_df_info_to_console(dataframe_dict):
 
 
 def create_data_profiles(dataframe_dict, base_output_folder):
-    profiles_folder = os.path.join(base_output_folder, 'profiles')
+    profiles_folder = os.path.join(base_output_folder, "profiles")
 
     if len(os.listdir(profiles_folder)) == 3:
         print("Profiles already exist. Skipping creation.")

@@ -1,1 +1,5 @@
+venv/
+*.pyc
 .idea/
+/data/output/
+.DS_Store

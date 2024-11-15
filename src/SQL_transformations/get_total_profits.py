@@ -1,9 +1,12 @@
 def get_total_profits(dataframe_dict):
     transactions_df = dataframe_dict["transactions"]
 
-    total_profit = transactions_df.loc[transactions_df['total_price'] > 0, 'total_price'].sum()
+    total_profit = transactions_df.loc[
+        transactions_df["total_price"] > 0, "total_price"
+    ].sum()
 
     print(f"Total profits: {total_profit}")
+
 
 """
 SQL Query:

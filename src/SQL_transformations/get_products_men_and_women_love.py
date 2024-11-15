@@ -1,19 +1,27 @@
-from src.SQL_transformations.get_favourite_products import get_favourite_product_by_gender
+from src.SQL_transformations.get_favourite_products import (
+    get_favourite_product_by_gender,
+)
 
 
 def get_products_men_and_women_love(dataframe_dict):
-    _, favourite_mens_products = get_favourite_product_by_gender(dataframe_dict=dataframe_dict, gender='Male')
-    _, favourite_womens_products = get_favourite_product_by_gender(dataframe_dict=dataframe_dict, gender='Female')
+    _, favourite_mens_products = get_favourite_product_by_gender(
+        dataframe_dict=dataframe_dict, gender="Male"
+    )
+    _, favourite_womens_products = get_favourite_product_by_gender(
+        dataframe_dict=dataframe_dict, gender="Female"
+    )
 
     # convert favourite_womens_products and favourite_mens_products to sets and find their intersection
     favourite_womens_products = set(favourite_womens_products.index.tolist())
-    print('favourite_womens_products:', favourite_womens_products)
+    print("favourite_womens_products:", favourite_womens_products)
     favourite_mens_products = set(favourite_mens_products.index.tolist())
-    print('favourite_mens_products:', favourite_mens_products)
+    print("favourite_mens_products:", favourite_mens_products)
     products = favourite_womens_products.intersection(favourite_mens_products)
 
     if len(products) == 0:
-        print("There are no products that both men and women love based on the number of times purchased.")
+        print(
+            "There are no products that both men and women love based on the number of times purchased."
+        )
     else:
         print("The products that both men and women love are: ", products)
 
